@@ -61,7 +61,7 @@ sealed class Transition<out State> {
          */
         fun <State> transition(
             state: State,
-            invokeEffects: (() -> Unit)? = null
+            invokeEffects: (@EffectScope () -> Unit)? = null
         ): Stateful<State> {
             return Stateful(state, invokeEffects)
         }
@@ -70,7 +70,7 @@ sealed class Transition<out State> {
          * Creates a transition that only executes [invokeEffects].
          */
         fun transition(
-            invokeEffects: () -> Unit
+            invokeEffects: @EffectScope () -> Unit
         ): OnlyEffects {
             return OnlyEffects(invokeEffects)
         }

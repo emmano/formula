@@ -85,6 +85,7 @@ class ChildrenRemovalTest {
                 output = RenderModel(
                     onExit = context.callback {
                         transition {
+                            context.callback { none() }
                             input.exit()
                             logExit()
                         }
